@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import pe.edu.upc.talenttune.entities.Notificacion;
 
 @Repository
-public interface INotificaciónRepository extends JpaRepository<Notificacion, Integer> {
+public interface INotificacionRepository extends JpaRepository<Notificacion, Integer> {
 }
