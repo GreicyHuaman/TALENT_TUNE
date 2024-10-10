@@ -28,7 +28,7 @@ public class BandaController {
 
     @PostMapping
     @PreAuthorize("hasAnyAuthority('TALENTO','ADMINISTRADOR')")
-    public void registrar(@RequestBody BandaDTO dto){
+    public void registrar(@RequestBody BandaDTO dto) {
         ModelMapper m = new ModelMapper();
         Banda banda = m.map(dto, Banda.class);
         bS.update(banda);
@@ -36,7 +36,7 @@ public class BandaController {
 
     @PatchMapping
     @PreAuthorize("hasAnyAuthority('TALENTO','ADMINISTRADOR')")
-    public void modificar(@RequestBody BandaDTO dto){
+    public void modificar(@RequestBody BandaDTO dto) {
         ModelMapper m = new ModelMapper();
         Banda banda = m.map(dto, Banda.class);
         bS.update(banda);
@@ -44,15 +44,15 @@ public class BandaController {
 
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAnyAuthority('TALENTO','ADMINISTRADOR')")
-    public void eliminar(@PathVariable("id") Integer id){
+    public void eliminar(@PathVariable("id") Integer id) {
         bS.delete(id);
     }
 
     @GetMapping("/{id}")
     @PreAuthorize("hasAnyAuthority('TALENTO','ADMINISTRADOR')")
     public BandaDTO listarId(@PathVariable("id") Integer id) {
-        ModelMapper m=new ModelMapper();
-        BandaDTO dto=m.map(bS.findById(id),BandaDTO.class);
+        ModelMapper m = new ModelMapper();
+        BandaDTO dto = m.map(bS.findById(id), BandaDTO.class);
         return dto;
     }
 }
