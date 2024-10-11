@@ -12,7 +12,7 @@ public class UsuarioBanda {
     private int idUsuarioBanda;
     @Column(name = "fechaIngreso", nullable = false)
     private LocalDate fechaIngreso;
-    @Column(name = "fechaSalida", nullable = false)
+    @Column(name = "fechaSalida")
     private LocalDate fechaSalida;
     @Column(name = "rol", nullable = false, length = 25)
     private String rol;

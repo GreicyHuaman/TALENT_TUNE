@@ -16,15 +16,15 @@ public class Mensaje {
     private LocalDate fechaEnvio;
 
     @ManyToOne
-    @JoinColumn(name = "idUsuarioManager")
+    @JoinColumn(name = "idUsuarioManager", nullable = true)
     private Usuario idUsuarioManager;
 
     @ManyToOne
-    @JoinColumn(name = "idUsuarioTalento")
+    @JoinColumn(name = "idUsuarioTalento", nullable = true)
     private Usuario idUsuarioTalento;
 
     @ManyToOne
-    @JoinColumn(name = "idBanda")
+    @JoinColumn(name = "idBanda", nullable = true)
     private Banda banda;
 
     public Mensaje() {
