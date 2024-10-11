@@ -1,5 +1,6 @@
 package pe.edu.upc.talenttune.dtos;
 
+import pe.edu.upc.talenttune.entities.Banda;
 import pe.edu.upc.talenttune.entities.Categoria;
 import pe.edu.upc.talenttune.entities.Usuario;
 
@@ -16,6 +17,7 @@ public class ContenidoDTO {
 
     private Usuario usuario;
     private Categoria idCategoria;
+    private Banda banda;
 
     public int getIdContenido() {
         return idContenido;
@@ -87,5 +89,13 @@ public class ContenidoDTO {
 
     public void setIdCategoria(Categoria idCategoria) {
         this.idCategoria = idCategoria;
+    }
+
+    public Banda getBanda() {
+        return banda;
+    }
+
+    public void setBanda(Banda banda) {
+        this.banda = banda;
     }
 }

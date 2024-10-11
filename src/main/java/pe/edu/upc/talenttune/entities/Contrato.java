@@ -30,7 +30,7 @@ public class Contrato {
     private Usuario idUsuarioManager;
 
     @ManyToOne
-    @JoinColumn(name = "idUsuarioTalento", nullable = false)
+    @JoinColumn(name = "idUsuarioTalento", nullable = true)
     private Usuario idUsuarioTalento;
 
     @ManyToOne
