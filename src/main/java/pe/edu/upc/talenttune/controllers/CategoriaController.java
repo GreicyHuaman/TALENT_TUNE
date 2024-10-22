@@ -2,7 +2,6 @@ package pe.edu.upc.talenttune.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.talenttune.dtos.CategoriaDTO;
 import pe.edu.upc.talenttune.entities.Categoria;
@@ -19,7 +18,6 @@ public class CategoriaController {
     private ICategoriaService cS;
 
     @GetMapping
-    @PreAuthorize("hasAnyAuthority('TALENTO','ADMINISTRADOR','SEGUIDOR','MANAGER')")
     public List<CategoriaDTO> listarCategorias() {
         return cS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();
@@ -27,10 +25,7 @@ public class CategoriaController {
         }).collect(Collectors.toList());
     }
 
-    ;
-
     @PostMapping
-    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     public void registrar(@RequestBody CategoriaDTO dto) {
         ModelMapper m = new ModelMapper();
         Categoria ca = m.map(dto, Categoria.class);
@@ -38,7 +33,6 @@ public class CategoriaController {
     }
 
     @PatchMapping
-    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     public void modificar(@RequestBody CategoriaDTO dto) {
         ModelMapper m = new ModelMapper();
         Categoria ca = m.map(dto, Categoria.class);
@@ -46,13 +40,11 @@ public class CategoriaController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     public void eliminar(@PathVariable("id") Integer id) {
         cS.delete(id);
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('TALENTO','ADMINISTRADOR')")
     public CategoriaDTO listarId(@PathVariable("id") Integer id) {
         ModelMapper m = new ModelMapper();
         CategoriaDTO dto = m.map(cS.findById(id), CategoriaDTO.class);

@@ -13,10 +13,6 @@ public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUsuario;
-    @Column(name = "username", nullable = false, length = 20)
-    private String username;
-    @Column(name = "password", nullable = false, length = 500)
-    private String password;
     @Column(name = "nombres", nullable = false, length = 100)
     private String nombres;
     @Column(name = "fechaNacimiento", nullable = false)
@@ -31,21 +27,13 @@ public class Usuario implements Serializable {
     private String sexo;
     @Column(name = "estudios", length = 50)
     private String estudios;
-    @Column(name = "enabled", nullable = false)
-    private Boolean enabled;
 
-    @JsonIgnore
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "idUsuario")
-    private List<Rol> roles;
 
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String username, String password, String nombres, LocalDate fechaNacimiento, String descripcion, String pais, String agencia, String sexo, String estudios, Boolean enabled, List<Rol> roles) {
+    public Usuario(int idUsuario, String nombres, LocalDate fechaNacimiento, String descripcion, String pais, String agencia, String sexo, String estudios) {
         this.idUsuario = idUsuario;
-        this.username = username;
-        this.password = password;
         this.nombres = nombres;
         this.fechaNacimiento = fechaNacimiento;
         this.descripcion = descripcion;
@@ -53,8 +41,6 @@ public class Usuario implements Serializable {
         this.agencia = agencia;
         this.sexo = sexo;
         this.estudios = estudios;
-        this.enabled = enabled;
-        this.roles = roles;
     }
 
     public int getIdUsuario() {
@@ -63,22 +49,6 @@ public class Usuario implements Serializable {
 
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getNombres() {
@@ -135,21 +105,5 @@ public class Usuario implements Serializable {
 
     public void setEstudios(String estudios) {
         this.estudios = estudios;
-    }
-
-    public Boolean getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public List<Rol> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Rol> roles) {
-        this.roles = roles;
     }
 }
