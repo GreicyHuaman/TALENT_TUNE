@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 public class ContenidoDTO {
     private int idContenido;
-    private String tipoContenido;
+    private String Contenido;
     private String titulo;
     private LocalDate fechaPublicacion;
     private boolean likes;
@@ -25,12 +25,12 @@ public class ContenidoDTO {
         this.idContenido = idContenido;
     }
 
-    public String getTipoContenido() {
-        return tipoContenido;
+    public String getContenido() {
+        return Contenido;
     }
 
-    public void setTipoContenido(String tipoContenido) {
-        this.tipoContenido = tipoContenido;
+    public void setContenido(String contenido) {
+        Contenido = contenido;
     }
 
     public String getTitulo() {
