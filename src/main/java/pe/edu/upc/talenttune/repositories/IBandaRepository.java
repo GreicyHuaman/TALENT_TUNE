@@ -17,4 +17,6 @@ public interface IBandaRepository extends JpaRepository<Banda, Integer> {
             " ORDER BY contratos_activos DESC\n" +
             " LIMIT 3;\n",nativeQuery = true)
     List<String[]> BandasMasContratosActivos();
+
+    boolean existsByNombre(String nombre);
 }

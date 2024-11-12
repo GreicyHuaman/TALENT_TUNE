@@ -64,4 +64,9 @@ public class BandaController {
         }
         return listaDTO;
     }
+    @GetMapping("/exists/{nombre}")
+    public boolean existsByNombre(@PathVariable("nombre") String nombre) {
+        return bS.existsByNombre(nombre);
+    }
+
 }

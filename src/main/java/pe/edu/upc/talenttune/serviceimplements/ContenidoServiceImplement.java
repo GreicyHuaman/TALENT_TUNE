@@ -38,4 +38,9 @@ public class ContenidoServiceImplement implements IContenidoService {
         return cR.findById(id).orElse(new Contenido());
     }
 
+    @Override
+    public List<String[]> CatPorContenido(String tipocategoria) {
+        return cR.CatPorContenido(tipocategoria);
+    }
+
 }

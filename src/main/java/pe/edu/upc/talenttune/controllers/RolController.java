@@ -22,9 +22,7 @@ public class RolController {
             ModelMapper m = new ModelMapper();
             return m.map(x, RolDTO.class);
         }).collect(Collectors.toList());
-    }
-
-    ;
+    };
 
     @PostMapping
     public void registrar(@RequestBody RolDTO dto) {

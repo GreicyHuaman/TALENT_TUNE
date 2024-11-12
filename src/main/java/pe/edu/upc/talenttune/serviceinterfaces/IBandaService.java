@@ -16,4 +16,6 @@ public interface IBandaService {
     public Banda findById(int id);
 
     List<String[]> BandasMasContratosActivos();
+
+    public boolean existsByNombre(String nombre);
 }

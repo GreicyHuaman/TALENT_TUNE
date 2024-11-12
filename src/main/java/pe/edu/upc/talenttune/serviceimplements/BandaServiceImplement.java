@@ -43,4 +43,9 @@ public class BandaServiceImplement implements IBandaService {
         return bR.BandasMasContratosActivos();
     }
 
+    @Override
+    public boolean existsByNombre(String nombre) {
+        return bR.existsByNombre(nombre);
+    }
+
 }

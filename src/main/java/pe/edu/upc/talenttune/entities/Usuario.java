@@ -13,8 +13,14 @@ public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUsuario;
+    @Column(name = "username", nullable = false, length = 20)
+    private String username;
+    @Column(name = "password", nullable = false, length = 500)
+    private String password;
     @Column(name = "nombres", nullable = false, length = 100)
     private String nombres;
+    @Column(name = "apellidos", nullable = false, length = 100)
+    private String apellidos;
     @Column(name = "fechaNacimiento", nullable = false)
     private LocalDate fechaNacimiento;
     @Column(name = "descripcion", length = 100)
@@ -27,20 +33,29 @@ public class Usuario implements Serializable {
     private String sexo;
     @Column(name = "estudios", length = 50)
     private String estudios;
+    private Boolean enabled;
 
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "idUsuario")
+    private List<Rol> roles;
 
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String nombres, LocalDate fechaNacimiento, String descripcion, String pais, String agencia, String sexo, String estudios) {
+    public Usuario(int idUsuario, String username, String password, String nombres, String apellidos, LocalDate fechaNacimiento, String descripcion, String pais, String agencia, String sexo, String estudios, Boolean enabled, List<Rol> roles) {
         this.idUsuario = idUsuario;
+        this.username = username;
+        this.password = password;
         this.nombres = nombres;
+        this.apellidos = apellidos;
         this.fechaNacimiento = fechaNacimiento;
         this.descripcion = descripcion;
         this.pais = pais;
         this.agencia = agencia;
         this.sexo = sexo;
         this.estudios = estudios;
+        this.enabled = enabled;
+        this.roles = roles;
     }
 
     public int getIdUsuario() {
@@ -51,12 +66,36 @@ public class Usuario implements Serializable {
         this.idUsuario = idUsuario;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getNombres() {
         return nombres;
     }
 
     public void setNombres(String nombres) {
         this.nombres = nombres;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
     public LocalDate getFechaNacimiento() {
@@ -105,5 +144,21 @@ public class Usuario implements Serializable {
 
     public void setEstudios(String estudios) {
         this.estudios = estudios;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public List<Rol> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Rol> roles) {
+        this.roles = roles;
     }
 }

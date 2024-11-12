@@ -9,11 +9,9 @@ public class ContratoDTO {
     private int idContrato;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
-    private int duracion;
     private double salario;
     private String estado;
     private String condiciones;
-    private Boolean renovable;
 
     private Usuario idUsuarioManager;
     private Usuario idUsuarioTalento;
@@ -43,14 +41,6 @@ public class ContratoDTO {
         this.fechaFin = fechaFin;
     }
 
-    public int getDuracion() {
-        return duracion;
-    }
-
-    public void setDuracion(int duracion) {
-        this.duracion = duracion;
-    }
-
     public double getSalario() {
         return salario;
     }
@@ -73,14 +63,6 @@ public class ContratoDTO {
 
     public void setCondiciones(String condiciones) {
         this.condiciones = condiciones;
-    }
-
-    public Boolean getRenovable() {
-        return renovable;
-    }
-
-    public void setRenovable(Boolean renovable) {
-        this.renovable = renovable;
     }
 
     public Usuario getIdUsuarioManager() {
