@@ -10,12 +10,5 @@ import pe.edu.upc.talenttune.entities.Usuario;
 
 @Repository
 public interface IUsuarioRepository extends JpaRepository<Usuario, Integer> {
-    public Usuario findOneByUsername (String username);
-
-    //INSERTAR ROLES
-    @Transactional
-    @Modifying
-    @Query(value = "insert into Roles (rol, idUsuario) VALUES (:rol, :idUsuario)", nativeQuery = true)
-    public void insRol(@Param("rol") String authority, @Param("idUsuario") int idUsuario);
 
 }

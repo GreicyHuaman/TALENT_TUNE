@@ -11,12 +11,9 @@ public class ContenidoDTO {
     private String tipoContenido;
     private String titulo;
     private LocalDate fechaPublicacion;
-    private int duracion;
-    private int visualizaciones;
-    private int likes;
+    private boolean likes;
 
     private Usuario usuario;
-    private Categoria idCategoria;
     private Banda banda;
 
     public int getIdContenido() {
@@ -51,27 +48,11 @@ public class ContenidoDTO {
         this.fechaPublicacion = fechaPublicacion;
     }
 
-    public int getDuracion() {
-        return duracion;
-    }
-
-    public void setDuracion(int duracion) {
-        this.duracion = duracion;
-    }
-
-    public int getVisualizaciones() {
-        return visualizaciones;
-    }
-
-    public void setVisualizaciones(int visualizaciones) {
-        this.visualizaciones = visualizaciones;
-    }
-
-    public int getLikes() {
+    public boolean isLikes() {
         return likes;
     }
 
-    public void setLikes(int likes) {
+    public void setLikes(boolean likes) {
         this.likes = likes;
     }
 
@@ -81,14 +62,6 @@ public class ContenidoDTO {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
-    }
-
-    public Categoria getIdCategoria() {
-        return idCategoria;
-    }
-
-    public void setIdCategoria(Categoria idCategoria) {
-        this.idCategoria = idCategoria;
     }
 
     public Banda getBanda() {
