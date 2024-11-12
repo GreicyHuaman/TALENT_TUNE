@@ -13,7 +13,7 @@ public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUsuario;
-    @Column(name = "username", nullable = false, length = 20)
+    @Column(name = "username", nullable = false, length = 30)
     private String username;
     @Column(name = "password", nullable = false, length = 500)
     private String password;
