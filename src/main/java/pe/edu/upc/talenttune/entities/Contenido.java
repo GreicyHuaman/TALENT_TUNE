@@ -24,19 +24,24 @@ public class Contenido {
     private Usuario usuario;
 
     @ManyToOne
+    @JoinColumn(name = "idCategoria")
+    private Categoria idCategoria;
+
+    @ManyToOne
     @JoinColumn(name = "idBanda", nullable = true)
     private Banda banda;
 
     public Contenido() {
     }
 
-    public Contenido(int idContenido, String contenido, String titulo, LocalDate fechaPublicacion, boolean likes, Usuario usuario, Banda banda) {
+    public Contenido(int idContenido, String contenido, String titulo, LocalDate fechaPublicacion, boolean likes, Usuario usuario, Categoria idCategoria, Banda banda) {
         this.idContenido = idContenido;
         Contenido = contenido;
         this.titulo = titulo;
         this.fechaPublicacion = fechaPublicacion;
         this.likes = likes;
         this.usuario = usuario;
+        this.idCategoria = idCategoria;
         this.banda = banda;
     }
 
@@ -94,5 +99,13 @@ public class Contenido {
 
     public void setBanda(Banda banda) {
         this.banda = banda;
+    }
+
+    public Categoria getIdCategoria() {
+        return idCategoria;
+    }
+
+    public void setIdCategoria(Categoria idCategoria) {
+        this.idCategoria = idCategoria;
     }
 }

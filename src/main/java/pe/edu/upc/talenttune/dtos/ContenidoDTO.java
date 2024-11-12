@@ -14,6 +14,7 @@ public class ContenidoDTO {
     private boolean likes;
 
     private Usuario usuario;
+    private Categoria idCategoria;
     private Banda banda;
 
     public int getIdContenido() {
@@ -62,6 +63,14 @@ public class ContenidoDTO {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public Categoria getIdCategoria() {
+        return idCategoria;
+    }
+
+    public void setIdCategoria(Categoria idCategoria) {
+        this.idCategoria = idCategoria;
     }
 
     public Banda getBanda() {
