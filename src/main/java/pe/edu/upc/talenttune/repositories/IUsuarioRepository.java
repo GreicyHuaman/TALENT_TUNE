@@ -8,9 +8,18 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import pe.edu.upc.talenttune.entities.Usuario;
 
+import java.util.List;
+
 @Repository
 public interface IUsuarioRepository extends JpaRepository<Usuario, Integer> {
     public Usuario findOneByUsername (String username);
+
+    @Query(value = "SELECT ROUND(AVG(EXTRACT(YEAR FROM AGE(u.fecha_nacimiento)))) AS edad_promedio\n" +
+            "FROM usuario u\n" +
+            "JOIN roles r ON u.id_usuario = r.id_usuario\n" +
+            "WHERE r.tipo_rol = 'TALENTO'",nativeQuery = true)
+    public List<String[]> edadPromedioTalento();
+
     //INSERTAR ROLES
     @Transactional
     @Modifying

@@ -3,10 +3,12 @@ package pe.edu.upc.talenttune.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.talenttune.dtos.EdadPromedioTalentoDTO;
 import pe.edu.upc.talenttune.dtos.UsuarioDTO;
 import pe.edu.upc.talenttune.entities.Usuario;
 import pe.edu.upc.talenttune.serviceinterfaces.IUsuarioService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -50,6 +52,18 @@ public class UsuarioController {
         ModelMapper m = new ModelMapper();
         UsuarioDTO dto = m.map(uS.findById(id), UsuarioDTO.class);
         return dto;
+    }
+
+    @GetMapping("/Promedio")
+    public List<EdadPromedioTalentoDTO> edadPromedioTalento() {
+        List<String[]> lista = uS.edadPromedioTalento();
+        List<EdadPromedioTalentoDTO> listaDTO = new ArrayList<>();
+        for (String[]columna : lista) {
+            EdadPromedioTalentoDTO dto = new EdadPromedioTalentoDTO();
+            dto.setEdadPromedio(Integer.parseInt(columna[0]));
+            listaDTO.add(dto);
+        }
+        return listaDTO;
     }
 }
 
