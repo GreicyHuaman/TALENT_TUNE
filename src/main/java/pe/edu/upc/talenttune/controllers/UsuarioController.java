@@ -65,5 +65,11 @@ public class UsuarioController {
         }
         return listaDTO;
     }
+    @GetMapping("ultimoUsuario")
+    public int encontrarUltimoUsuario(){
+        return uS.findLastUserRegister();
+    }
+
+
 }
 

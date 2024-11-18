@@ -15,5 +15,7 @@ public interface IUsuarioService {
 
     public Usuario findById(int id);
 
+    public int findLastUserRegister();
+
     public List<String[]> edadPromedioTalento();
 }

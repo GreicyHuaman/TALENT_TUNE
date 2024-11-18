@@ -20,6 +20,12 @@ public interface IUsuarioRepository extends JpaRepository<Usuario, Integer> {
             "WHERE r.tipo_rol = 'TALENTO'",nativeQuery = true)
     public List<String[]> edadPromedioTalento();
 
+    @Query(value = "SELECT id_usuario \n" +
+            "FROM usuario\n" +
+            "ORDER BY id_usuario DESC \n" +
+            "LIMIT 1 \n", nativeQuery = true)
+    public int findLastUserRegister();
+
     //INSERTAR ROLES
     @Transactional
     @Modifying

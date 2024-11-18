@@ -39,6 +39,11 @@ public class UsuarioServiceImplement implements IUsuarioService {
     }
 
     @Override
+    public int findLastUserRegister() {
+        return uR.findLastUserRegister();
+    }
+
+    @Override
     public List<String[]> edadPromedioTalento() {
         return uR.edadPromedioTalento();
     }
