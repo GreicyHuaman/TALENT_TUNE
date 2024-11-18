@@ -38,4 +38,14 @@ public class BandaServiceImplement implements IBandaService {
         return bR.findById(id).orElse(new Banda());
     }
 
+    @Override
+    public List<String[]> BandasMasContratosActivos() {
+        return bR.BandasMasContratosActivos();
+    }
+
+    @Override
+    public boolean existsByNombre(String nombre) {
+        return bR.existsByNombre(nombre);
+    }
+
 }

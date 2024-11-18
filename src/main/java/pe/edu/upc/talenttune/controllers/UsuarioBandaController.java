@@ -2,7 +2,6 @@ package pe.edu.upc.talenttune.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.talenttune.dtos.UsuarioBandaDTO;
 import pe.edu.upc.talenttune.entities.UsuarioBanda;
@@ -12,7 +11,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@PreAuthorize("hasAnyAuthority('TALENTO','ADMINISTRADOR','SEGUIDOR','MANAGER')")
 @RequestMapping("/usuariosbandas")
 public class UsuarioBandaController {
 
@@ -31,7 +29,7 @@ public class UsuarioBandaController {
     public void registrar(@RequestBody UsuarioBandaDTO dto) {
         ModelMapper m = new ModelMapper();
         UsuarioBanda usuarioBanda = m.map(dto, UsuarioBanda.class);
-        uBS.update(usuarioBanda);
+        uBS.insert(usuarioBanda);
     }
 
     @PatchMapping
@@ -47,7 +45,6 @@ public class UsuarioBandaController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('TALENTO','ADMINISTRADOR')")
     public UsuarioBandaDTO listarId(@PathVariable("id") Integer id) {
         ModelMapper m = new ModelMapper();
         UsuarioBandaDTO dto = m.map(uBS.findById(id), UsuarioBandaDTO.class);

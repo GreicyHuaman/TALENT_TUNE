@@ -13,12 +13,14 @@ public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUsuario;
-    @Column(name = "username", nullable = false, length = 20)
+    @Column(name = "username", nullable = false, length = 30)
     private String username;
     @Column(name = "password", nullable = false, length = 500)
     private String password;
     @Column(name = "nombres", nullable = false, length = 100)
     private String nombres;
+    @Column(name = "apellidos", nullable = false, length = 100)
+    private String apellidos;
     @Column(name = "fechaNacimiento", nullable = false)
     private LocalDate fechaNacimiento;
     @Column(name = "descripcion", length = 100)
@@ -31,10 +33,8 @@ public class Usuario implements Serializable {
     private String sexo;
     @Column(name = "estudios", length = 50)
     private String estudios;
-    @Column(name = "enabled", nullable = false)
     private Boolean enabled;
 
-    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "idUsuario")
     private List<Rol> roles;
@@ -42,11 +42,12 @@ public class Usuario implements Serializable {
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String username, String password, String nombres, LocalDate fechaNacimiento, String descripcion, String pais, String agencia, String sexo, String estudios, Boolean enabled, List<Rol> roles) {
+    public Usuario(int idUsuario, String username, String password, String nombres, String apellidos, LocalDate fechaNacimiento, String descripcion, String pais, String agencia, String sexo, String estudios, Boolean enabled, List<Rol> roles) {
         this.idUsuario = idUsuario;
         this.username = username;
         this.password = password;
         this.nombres = nombres;
+        this.apellidos = apellidos;
         this.fechaNacimiento = fechaNacimiento;
         this.descripcion = descripcion;
         this.pais = pais;
@@ -87,6 +88,14 @@ public class Usuario implements Serializable {
 
     public void setNombres(String nombres) {
         this.nombres = nombres;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
     public LocalDate getFechaNacimiento() {

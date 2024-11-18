@@ -16,8 +16,10 @@ import pe.edu.upc.talenttune.serviceimplements.JwtUserDetailsService;
 
 import java.io.IOException;
 
+//Clase 6
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
+
     @Autowired
     private JwtUserDetailsService jwtUserDetailsService;
     @Autowired
