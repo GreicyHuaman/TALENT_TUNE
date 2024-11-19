@@ -14,4 +14,8 @@ public interface IUsuarioService {
     public void delete(int id);
 
     public Usuario findById(int id);
+
+    public int findLastUserRegister();
+
+    public List<String[]> edadPromedioTalento();
 }

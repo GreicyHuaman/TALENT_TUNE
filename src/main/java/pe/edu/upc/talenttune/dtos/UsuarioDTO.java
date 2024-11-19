@@ -7,6 +7,7 @@ public class UsuarioDTO {
     private String username;
     private String password;
     private String nombres;
+    private String apellidos;
     private LocalDate fechaNacimiento;
     private String descripcion;
     private String pais;
@@ -45,6 +46,14 @@ public class UsuarioDTO {
 
     public void setNombres(String nombres) {
         this.nombres = nombres;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
     public LocalDate getFechaNacimiento() {

@@ -5,7 +5,6 @@ import pe.edu.upc.talenttune.entities.Usuario;
 
 public class UsuarioEventoDTO {
     private int idUsuarioEvento;
-    private boolean interesado;
     private boolean asistio;
     private int calificacion;
     private Usuario usuario;
@@ -17,14 +16,6 @@ public class UsuarioEventoDTO {
 
     public void setIdUsuarioEvento(int idUsuarioEvento) {
         this.idUsuarioEvento = idUsuarioEvento;
-    }
-
-    public boolean isInteresado() {
-        return interesado;
-    }
-
-    public void setInteresado(boolean interesado) {
-        this.interesado = interesado;
     }
 
     public boolean isAsistio() {

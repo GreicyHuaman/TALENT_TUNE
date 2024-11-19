@@ -2,26 +2,23 @@ package pe.edu.upc.talenttune.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.talenttune.dtos.EdadPromedioTalentoDTO;
 import pe.edu.upc.talenttune.dtos.UsuarioDTO;
 import pe.edu.upc.talenttune.entities.Usuario;
 import pe.edu.upc.talenttune.serviceinterfaces.IUsuarioService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@PreAuthorize("hasAnyAuthority('TALENTO','ADMINISTRADOR','SEGUIDOR','MANAGER')")
 @RequestMapping("/usuarios")
 public class UsuarioController {
 
     @Autowired
     private IUsuarioService uS;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
 
     @GetMapping
     public List<UsuarioDTO> listarUsuarios() {
@@ -35,8 +32,6 @@ public class UsuarioController {
     public void registrar(@RequestBody UsuarioDTO dto) {
         ModelMapper m = new ModelMapper();
         Usuario usuario = m.map(dto, Usuario.class);
-        String encodedPassword = passwordEncoder.encode(usuario.getPassword());
-        usuario.setPassword(encodedPassword);
         uS.insert(usuario);
     }
 
@@ -53,10 +48,28 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('TALENTO','ADMINISTRADOR')")
     public UsuarioDTO listarId(@PathVariable("id") Integer id) {
         ModelMapper m = new ModelMapper();
         UsuarioDTO dto = m.map(uS.findById(id), UsuarioDTO.class);
         return dto;
     }
+
+    @GetMapping("/Promedio")
+    public List<EdadPromedioTalentoDTO> edadPromedioTalento() {
+        List<String[]> lista = uS.edadPromedioTalento();
+        List<EdadPromedioTalentoDTO> listaDTO = new ArrayList<>();
+        for (String[]columna : lista) {
+            EdadPromedioTalentoDTO dto = new EdadPromedioTalentoDTO();
+            dto.setEdadPromedio(Integer.parseInt(columna[0]));
+            listaDTO.add(dto);
+        }
+        return listaDTO;
+    }
+    @GetMapping("ultimoUsuario")
+    public int encontrarUltimoUsuario(){
+        return uS.findLastUserRegister();
+    }
+
+
 }
+

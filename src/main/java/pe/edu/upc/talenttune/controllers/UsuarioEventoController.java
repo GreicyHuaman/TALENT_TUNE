@@ -2,7 +2,6 @@ package pe.edu.upc.talenttune.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.talenttune.dtos.UsuarioEventoDTO;
 import pe.edu.upc.talenttune.entities.UsuarioEvento;
@@ -12,7 +11,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@PreAuthorize("hasAnyAuthority('TALENTO','ADMINISTRADOR','SEGUIDOR','MANAGER')")
 @RequestMapping("/usuarioseventos")
 public class UsuarioEventoController {
 
@@ -31,7 +29,7 @@ public class UsuarioEventoController {
     public void registrar(@RequestBody UsuarioEventoDTO dto) {
         ModelMapper m = new ModelMapper();
         UsuarioEvento usuarioEvento = m.map(dto, UsuarioEvento.class);
-        uES.update(usuarioEvento);
+        uES.insert(usuarioEvento);
     }
 
     @PatchMapping
@@ -47,7 +45,6 @@ public class UsuarioEventoController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('TALENTO','ADMINISTRADOR')")
     public UsuarioEventoDTO listarId(@PathVariable("id") Integer id) {
         ModelMapper m = new ModelMapper();
         UsuarioEventoDTO dto = m.map(uES.findById(id), UsuarioEventoDTO.class);

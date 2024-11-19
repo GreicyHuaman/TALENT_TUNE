@@ -1,5 +1,6 @@
 package pe.edu.upc.talenttune.serviceimplements;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -13,6 +14,7 @@ import pe.edu.upc.talenttune.repositories.IUsuarioRepository;
 import java.util.ArrayList;
 import java.util.List;
 
+//Clase 2
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
     @Autowired

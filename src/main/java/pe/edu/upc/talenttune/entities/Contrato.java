@@ -14,16 +14,12 @@ public class Contrato {
     private LocalDate fechaInicio;
     @Column(name = "fechaFin", nullable = false)
     private LocalDate fechaFin;
-    @Column(name = "duracion", nullable = false)
-    private int duracion;
     @Column(name = "salario", nullable = false)
     private double salario;
     @Column(name = "estado", nullable = false)
     private String estado;
     @Column(name = "condiciones", nullable = false, length = 300)
     private String condiciones;
-    @Column(name = "renovable")
-    private Boolean renovable;
 
     @ManyToOne
     @JoinColumn(name = "idUsuarioManager", nullable = false)
@@ -40,15 +36,13 @@ public class Contrato {
     public Contrato() {
     }
 
-    public Contrato(int idContrato, LocalDate fechaInicio, LocalDate fechaFin, int duracion, double salario, String estado, String condiciones, Boolean renovable, Usuario idUsuarioManager, Usuario idUsuarioTalento, Banda banda) {
+    public Contrato(int idContrato, LocalDate fechaInicio, LocalDate fechaFin, double salario, String estado, String condiciones, Usuario idUsuarioManager, Usuario idUsuarioTalento, Banda banda) {
         this.idContrato = idContrato;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
-        this.duracion = duracion;
         this.salario = salario;
         this.estado = estado;
         this.condiciones = condiciones;
-        this.renovable = renovable;
         this.idUsuarioManager = idUsuarioManager;
         this.idUsuarioTalento = idUsuarioTalento;
         this.banda = banda;
@@ -78,14 +72,6 @@ public class Contrato {
         this.fechaFin = fechaFin;
     }
 
-    public int getDuracion() {
-        return duracion;
-    }
-
-    public void setDuracion(int duracion) {
-        this.duracion = duracion;
-    }
-
     public double getSalario() {
         return salario;
     }
@@ -108,14 +94,6 @@ public class Contrato {
 
     public void setCondiciones(String condiciones) {
         this.condiciones = condiciones;
-    }
-
-    public Boolean getRenovable() {
-        return renovable;
-    }
-
-    public void setRenovable(Boolean renovable) {
-        this.renovable = renovable;
     }
 
     public Usuario getIdUsuarioManager() {
